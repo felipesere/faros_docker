@@ -1,11 +1,13 @@
 machine:
   services:
     - docker
+test:
+  override:
+    - ./build-images.sh
 deployment:
   prod:
     branch: master
     commands:
-      - ./build-images.sh
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push $DOCKER_USER/erlang18:latest
       - docker push $DOCKER_USER/erlang18:$CIRCLE_SHA1
