@@ -1,10 +1,10 @@
-FROM smebberson/alpine-base
+FROM smebberson/alpine-base:3.2.1
 
 MAINTAINER felipesere@gmail.com
 
 ENV erlang_version 18.1-r1
 RUN echo "@main http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
-RUN apk --update add mysql-client@main=10.0.21-r1 \
+RUN apk --update add postgresql-client@main=9.4.5-r1 \
                      ncurses@main=5.9-r4 \ 
                      erlang-erts@main=${erlang_version} \
                      erlang-sasl@main=${erlang_version} \
